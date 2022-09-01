@@ -106,45 +106,4 @@ deallocated. In other words, it prevents memory leaks. Your code is responsible 
 and deleting all owned objects that are no longer needed. Our grader will follow the rules and appropriately
 delete all objects that is owned by our code. If we detect a memory leak in your implementation, you may lose
 a portion of the points.
-Example
-The following code:
 
-using std :: cout ;
-using std :: endl ;
-template < typename T > void printAndDestroy ( IIterable <T > * i )
-{
-IIterator <T > * iterator = i - > iter ();
-try
-{
-while ( true )
-{
-cout << iterator - > next () << " " ;
-}
-}
-catch ( StopIteration &)
-{
-cout << endl ;
-delete iterator ;
-}
-delete i ;
-}
-int main ()
-{
-printAndDestroy ( take (3, repeat (0.f)));
-printAndDestroy ( take (5, skip (3, count (1.f, 2.f))));
-printAndDestroy ( take (5, accumulate ( count (1.f, 2.f))));
-printAndDestroy ( take (8, cycle ( take (3, count (1.f, 1.f)))));
-printAndDestroy ( concat ( take (1, repeat (4.f)) ,
-take (1, repeat (2.f))));
-printAndDestroy ( take (5, filter ( count (1.f, 1.f) ,
-alternate ( repeat ( true ) , repeat ( false )))));
-return 0;
-}
-is expected to produce the output:
-0 0 0
-7 9 11 13 15
-1 4 9 16 25
-1 2 3 1 2 3 1 2
-4 2
-1 3 5 7 9
-Good luck!
