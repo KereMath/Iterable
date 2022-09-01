@@ -108,9 +108,7 @@ delete all objects that is owned by our code. If we detect a memory leak in your
 a portion of the points.
 Example
 The following code:
-# include " Iterable . tpp "
-# include " IterTools . tpp "
-# include < iostream >
+
 using std :: cout ;
 using std :: endl ;
 template < typename T > void printAndDestroy ( IIterable <T > * i )
